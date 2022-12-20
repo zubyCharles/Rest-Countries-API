@@ -71,8 +71,6 @@ export const AllCountries = () => {
     localStorage.setItem('countries', JSON.stringify(allCountriesPreview));
   }, [allCountriesPreview]);
 
-  //console.log(allCountriesPreview);
-
   return (
     <main>
       <Header />

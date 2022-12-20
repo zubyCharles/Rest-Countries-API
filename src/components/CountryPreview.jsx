@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const CountryPreview = ({ country }) => {
   const { name, capital, region, population, flags } = country;
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const goToDetailedPage = () => {
     /*navigate to the detailed page of each country(path='/detailedPage'), while passing along

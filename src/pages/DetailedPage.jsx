@@ -9,13 +9,13 @@ export const DetailedPage = () => {
   const [borderCountries, setBorderCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  let location = useLocation();
+  const location = useLocation();
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { name } = location.state.country;
 
-  const SINGLE_COUNTRY_API_URL = `https://restcountries.com/v2/name/${name.common}`;
+  const SINGLE_COUNTRY_API_URL = `https://restcountries.com/v2/name/${name.official}`;
 
   useEffect(() => {
     const fetchSingleCountry = async () => {
@@ -32,6 +32,8 @@ export const DetailedPage = () => {
   }, [location.key]);
 
   useEffect(() => {
+    // return from localStorage, array of all countries bordering the selected country
+
     const bordercountries = JSON.parse(
       localStorage.getItem('countries')
     ).filter((country) => {
@@ -44,9 +46,6 @@ export const DetailedPage = () => {
     });
     setBorderCountries(bordercountries);
   }, [detailedCountry]);
-
-  // console.log(detailedCountry);
-  // console.log(borderCountries);
 
   return (
     <>
@@ -83,7 +82,10 @@ export const DetailedPage = () => {
         )}
 
         {detailedCountry.map((country) => (
-          <div className="px-10 py-20 lg:flex">
+          <div
+            key={country.name + country.population}
+            className="px-10 py-20 lg:flex"
+          >
             <div className="img w-full lg:w-[35%]">
               <img
                 className="w-full"
@@ -176,6 +178,7 @@ export const DetailedPage = () => {
                   {borderCountries.length >= 1 &&
                     borderCountries.map((country) => (
                       <button
+                        key={country.name.common + country.population}
                         onClick={() =>
                           navigate('/detailedPage', {
                             state: { country: country },
