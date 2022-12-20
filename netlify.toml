@@ -1,0 +1,5 @@
+#SPA ROUTER SUPPORT
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
