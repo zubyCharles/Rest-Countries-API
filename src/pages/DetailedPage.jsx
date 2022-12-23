@@ -21,11 +21,16 @@ export const DetailedPage = () => {
     const fetchSingleCountry = async () => {
       try {
         const response = await fetch(SINGLE_COUNTRY_API_URL);
-        const data = await response.json();
-        setDetailedCountry(data);
+        if (response.ok) {
+          const data = await response.json();
+          setDetailedCountry(data);
+        } else {
+          navigate('*');
+        }
         setIsLoading(false);
       } catch (error) {
         console.error(error);
+        navigate('*');
       }
     };
     fetchSingleCountry();
@@ -179,11 +184,12 @@ export const DetailedPage = () => {
                     borderCountries.map((country) => (
                       <button
                         key={country.name.common + country.population}
-                        onClick={() =>
+                        onClick={() => {
                           navigate('/detailedPage', {
                             state: { country: country },
-                          })
-                        }
+                          });
+                          setIsLoading(true);
+                        }}
                         className="py-1 px-4 mr-2 mb-2 dark:text-slate-300 bg-slate-50 border dark:bg-slate-800
                      border-slate-300 dark:border-slate-700 rounded hover:scale-95 transition-all"
                       >
