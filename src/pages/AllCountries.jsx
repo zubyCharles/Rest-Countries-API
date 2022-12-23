@@ -4,6 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import Header from '../components/Header';
 import DropDownMenu from '../components/DropDownMenu';
 import CountryPreview from '../components/CountryPreview';
+import ScrollToTopBtn from '../components/ScrollToTopBtn';
 
 export const AllCountries = () => {
   const [allCountriesPreview, setAllCountriesPreview] = useState(
@@ -74,6 +75,8 @@ export const AllCountries = () => {
   return (
     <main>
       <Header />
+
+      <ScrollToTopBtn />
 
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="w-[90%] lg:w-[30%] flex flex-row content-center py-6 lg:py-8 mx-auto lg:ml-16">
