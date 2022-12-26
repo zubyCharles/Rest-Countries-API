@@ -118,7 +118,7 @@ export const DetailedPage = () => {
                       Population:
                     </span>
                     <span className="pl-1 dark:text-slate-400">
-                      {country.population}
+                      {country.population.toLocaleString("en-US")}
                     </span>
                   </p>
                   <p className="flex text-sm py-[4px]">
