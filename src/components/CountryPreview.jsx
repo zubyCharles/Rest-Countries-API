@@ -28,7 +28,7 @@ const CountryPreview = ({ country }) => {
         </h2>
         <p className="flex text-sm py-[1px]">
           <span className="font-bold dark:text-slate-100">Population:</span>
-          <span className="pl-1 dark:text-slate-400">{population}</span>
+          <span className="pl-1 dark:text-slate-400">{population.toLocaleString("en-US")}</span>
         </p>
         <p className="flex text-sm py-[1px]">
           <span className="font-bold dark:text-slate-100">Region:</span>
