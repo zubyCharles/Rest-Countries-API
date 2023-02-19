@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import { ThreeDots } from 'react-loader-spinner';
@@ -51,6 +51,10 @@ export const DetailedPage = () => {
     });
     setBorderCountries(bordercountries);
   }, [detailedCountry]);
+
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.key]);
 
   return (
     <>

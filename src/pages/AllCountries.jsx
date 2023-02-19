@@ -40,7 +40,7 @@ export const AllCountries = () => {
      * search for a particular from the array returned from filtering the default
      * list of countries by region
      */
-    if (countryToSearch.length >= 3) {
+    if (countryToSearch.length >= 2) {
       return arrayOfCountries.filter(({ name }) => {
         const stringToCompare = name.common.substring(
           0,
